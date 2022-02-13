@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     static final String TAG = MainActivity.class.getSimpleName();
     static final String BASE_URL = "https://api.themoviedb.org/3/";
     static Retrofit retrofit = null;
-    final static String API_KEY = "YOUR_API_KEY";
+    final static String API_KEY = "856bdec268693b5f42fa58d720946353";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         connect();
+
 
         final Button btnProgramList = findViewById(R.id.btnProgramList);
         btnProgramList.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void connect() {
+
+
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
@@ -60,7 +64,10 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Movie> call, Response<Movie> response) {
                 int[] ids = {R.id.txtTitle, R.id.txtReleaseDate, R.id.txtPoster,
                         R.id.txtVote, R.id.txtOverview};
+
                 String[] values = {
+
+
                         response.body().getTitle(),
                         response.body().getReleaseDate(),
                         response.body().getPosterPath(),
