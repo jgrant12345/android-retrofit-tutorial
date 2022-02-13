@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void connect() {
-
-
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
