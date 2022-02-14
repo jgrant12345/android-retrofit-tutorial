@@ -44,6 +44,8 @@ public class MovieListActivity extends AppCompatActivity {
             )
     );
 
+    public static ArrayList<Movie> moviesList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +82,19 @@ public class MovieListActivity extends AppCompatActivity {
 //                        response.body().getVoteAverage().toString(),
 //                        response.body().getOverview()
                 };
-                System.out.println(programs.add(response.body().getMovieList().get(0).getTitle()));
-                System.out.println("should be after");
+                int movieListSize = response.body().getMovieList().size();
+//                get top 20 movies
+                for(int i =0; i < 20; i++){
+                    if(i >= movieListSize){
+                        break;
+                    }
+                    moviesList.add(response.body().getMovieList().get(i));
+                }
+
                 recyclerView = findViewById(R.id.rvMovieList);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(MovieListActivity.this));
-                recyclerView.setAdapter(new ProgramListAdapter(programs));
+                recyclerView.setAdapter(new MovieListAdapter(moviesList));
 
             }
             @Override
