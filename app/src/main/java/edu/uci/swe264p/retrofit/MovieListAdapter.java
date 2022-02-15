@@ -5,9 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.textservice.TextInfo;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -23,12 +26,15 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
         TextView releaseDate;
         TextView tvVote;
         TextView tvOverView;
+        ImageView poster;
         ViewHolder(View itemView) {
             super(itemView);
             tv = itemView.findViewById(R.id.tvTitle);
             releaseDate = itemView.findViewById((R.id.tvReleaseDate));
             tvVote = itemView.findViewById(R.id.tvVote);
             tvOverView = itemView.findViewById(R.id.tvOverview);
+            poster = itemView.findViewById(R.id.ivMovie);
+
 
 
 
@@ -48,6 +54,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
         holder.releaseDate.setText(program.getReleaseDate());
         holder.tvVote.setText(program.getVoteAverage().toString());
         holder.tvOverView.setText(program.getOverview());
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/" + program.getPosterPath()).into(holder.poster);
     }
 
     @Override

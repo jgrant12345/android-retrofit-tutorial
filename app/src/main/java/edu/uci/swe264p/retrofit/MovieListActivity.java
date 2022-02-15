@@ -25,24 +25,6 @@ public class MovieListActivity extends AppCompatActivity {
 
     static final String BASE_URL = "https://api.themoviedb.org/3/";
     final static String API_KEY = "856bdec268693b5f42fa58d720946353";
-    List<String> programs = new ArrayList<String>(
-            Arrays.asList(
-                    "Computer Science — Ph.D.",
-                    "Computer Science — M.S.",
-                    "Informatics — Ph.D.",
-                    "Informatics — M.S.",
-                    "Networked Systems — Ph.D.",
-                    "Networked Systems — Ph.D.",
-                    "Software Engineering — Ph.D.",
-                    "Software Engineering — M.S.",
-                    "Statistics — Ph.D.",
-                    "Statistics — M.S.",
-                    "Master of Computer Science (MCS)",
-                    "Master of Software Engineering (MSWE)",
-                    "Master of Human-Computer Interaction and Design (MHCID)",
-                    "Master of Embedded & Cyber-physical Systems (MECPS)"
-            )
-    );
 
     public static ArrayList<Movie> moviesList = new ArrayList<>();
 
@@ -73,15 +55,6 @@ public class MovieListActivity extends AppCompatActivity {
                 int[] ids = {R.id.txtTitle, R.id.txtReleaseDate, R.id.txtPoster,
                         R.id.txtVote, R.id.txtOverview};
 
-                String[] values = {
-
-
-//                        response.body().getTitle(),
-//                        response.body().getReleaseDate(),
-//                        response.body().getPosterPath(),
-//                        response.body().getVoteAverage().toString(),
-//                        response.body().getOverview()
-                };
                 int movieListSize = response.body().getMovieList().size();
 //                get top 20 movies
                 for(int i =0; i < 20; i++){
